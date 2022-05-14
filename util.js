@@ -1,3 +1,6 @@
+let fs = require("fs");
+let path = require("path");
+
 let types = {
     media: ["mp4", "mkv", "mp3"],
     archives: ['zip', '7z', 'rar', 'tar', 'gz', 'ar', 'iso', "xz"],
@@ -5,7 +8,6 @@ let types = {
     app: ['exe', 'dmg', 'pkg', "deb"]
 }
 
-let path = require("path");
 function returnFolderName(fileName) {
     let extname = path.extname(fileName);
     extname = extname.slice(1);
@@ -19,8 +21,35 @@ function returnFolderName(fileName) {
     }
     return "others";
 }
+
+function copytothatType(assetPath, type, organizeddirPath) {
+    // organized_dir -> type wala folder create
+    let destFolderPath = path.join(organizeddirPath, type);
+    if (!fs.existsSync(destFolderPath) ) {
+        fs.mkdirSync(destFolderPath)
+    }
+    let originalName = path.basename(assetPath);
+    let destFilePath = path.join(destFolderPath, originalName);
+    console.log(assetPath);
+    console.log(destFilePath);
+    fs.copyFileSync(assetPath, destFilePath);
+    fs.unlinkSync(assetPath);
+    // content copy
+    console.log(originalName, "file copied to ", type);
+
+}
+
+function isFile(assetPath) {
+    // file or folder
+    // console.log(assetPath);
+    let ans = fs.lstatSync(assetPath).isFile();
+    return ans;
+}
+
 module.exports={
-    utilFn:returnFolderName
+    utilFolderFn:returnFolderName,
+    utilCopyFn: copytothatType,
+    utilIsFileFn:isFile
 }
 
 // organize
