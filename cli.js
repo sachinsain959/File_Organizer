@@ -1,3 +1,5 @@
+#!/usr/bin/env node  //shebang syntax for node stack overflow
+
 //objects(module.exporst wale)
 let helpObj=require('./commands/help');
 let treeObj=require('./commands/tree');

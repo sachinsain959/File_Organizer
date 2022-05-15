@@ -1,0 +1,23 @@
+{
+  "name": "file_organiser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sachinsain959/File_Organizer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bin":{
+    "peppy": "cli.js"
+  },
+  "bugs": {
+    "url": "https://github.com/sachinsain959/File_Organizer/issues"
+  },
+  "homepage": "https://github.com/sachinsain959/File_Organizer#readme"
+}
